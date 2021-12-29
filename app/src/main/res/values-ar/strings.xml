@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ألوان</string>
+    <string name="blue">أزرق</string>
+    <string name="red">أحمر</string>
+    <string name="green">أخضر</string>
+    <string name="yellow">أصفر</string>
+    <string name="pink">وردي</string>
+    <string name="purple">بنفسجي</string>
+    <string name="cyan">سماوي</string>
+    <string name="orange">برتقالي</string>
+    <string name="brown">بني</string>
+    <string name="white">أبيض</string>
+    <string name="about">عن المطور</string>
+    <string name="start">إبداء</string>
+    <string name="game_logo">شعار اللعبة</string>
+    <string name="score">النقاط</string>
+    <string name="highest">أعلى النقاط</string>
+    <string name="what_color_is_it">ما هذا اللون ؟</string>
+</resources>

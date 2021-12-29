@@ -1,0 +1,22 @@
+<resources >
+    <!-- Base application theme. -->
+    <style name="Theme.Colors" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/green_a400</item>
+        <item name="colorPrimaryVariant">@color/blue_a400</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="android:textColor">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/red_a400</item>
+        <item name="colorSecondaryVariant">@color/purple_a400</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <!-- Status bar color. -->
+        <item name="android:windowTranslucentStatus">true</item>
+        <!-- Customize your theme here. -->
+
+        <item name="fontFamily">@font/lalezar</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+</resources>

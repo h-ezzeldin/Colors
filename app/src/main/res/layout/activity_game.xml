@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <import type="com.ezz.colors.R" />
+
+        <import type="java.util.List" />
+
+        <variable
+            name="color_name"
+            type="Integer" />
+
+        <variable
+            name="color"
+            type="Integer" />
+
+        <variable
+            name="highest"
+            type="Integer" />
+
+        <variable
+            name="score"
+            type="Integer" />
+
+        <variable
+            name="colors"
+            type="List&lt;Integer>" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".GameActivity">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/back_button"
+            style="@style/button.back"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_margin="16dp"
+            app:icon="@drawable/ic_round_arrow_back_ios_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/reset_button"
+            style="@style/button.back"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_margin="16dp"
+            app:icon="@drawable/ic_round_refresh_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/score_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@id/high_score_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/back_button">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/score"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+            <TextView
+                android:id="@+id/score_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{score.toString()}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+                tools:text="5" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/high_score_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/score_layout"
+            app:layout_constraintTop_toTopOf="@id/score_layout">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/highest"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+            <TextView
+                android:id="@+id/high_score_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{highest.toString()}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+                tools:text="45" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/query_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/score_layout">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/what_color_is_it"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{color_name}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+                android:textColor="@{ContextCompat.getColor(context, color)}"
+                tools:text="@string/cyan"
+                tools:textColor="@color/orange_a400" />
+        </LinearLayout>
+
+        <GridLayout
+            android:id="@+id/play_grid_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginBottom="16dp"
+            android:alignmentMode="alignBounds"
+            android:columnCount="3"
+            android:rowCount="3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/query_layout"
+            app:layout_constraintWidth_max="500dp"
+            tools:columnCount="3"
+            tools:rowCount="3">
+
+            <!--            <com.google.android.material.card.MaterialCardView style="@style/color_card"-->
+            <!--                app:cardBackgroundColor="@{ContextCompat.getColor(context, colors.get(0))}" />-->
+
+
+            <!--            <com.google.android.material.card.MaterialCardView style="@style/color_card"-->
+            <!--                app:cardBackgroundColor="@{ContextCompat.getColor(context, colors.get(1))}"/>-->
+
+            <!--            <com.google.android.material.card.MaterialCardView style="@style/color_card"-->
+            <!--                app:cardBackgroundColor="@{ContextCompat.getColor(context, colors.get(2))}"/>-->
+
+            <!--            <com.google.android.material.card.MaterialCardView style="@style/color_card"-->
+            <!--                app:cardBackgroundColor="@{ContextCompat.getColor(context, colors.get(3))}"/>-->
+
+            <!--            <com.google.android.material.card.MaterialCardView-->
+            <!--                style="@style/color_card"-->
+            <!--                android:visibility="@{colors.size() >=5 ? View.VISIBLE : View.GONE}"-->
+            <!--                app:cardBackgroundColor="@{colors.size() >= 5 ? ContextCompat.getColor(context, colors.get(4)) : R.color.transparent}" />-->
+
+            <!--            <com.google.android.material.card.MaterialCardView-->
+            <!--                style="@style/color_card"-->
+            <!--                android:visibility="@{colors.size() >=6 ? View.VISIBLE : View.GONE}"-->
+            <!--                app:cardBackgroundColor="@{colors.size() >= 6 ? ContextCompat.getColor(context, colors.get(5)) : R.color.transparent}" />-->
+
+            <!--            <com.google.android.material.card.MaterialCardView-->
+            <!--                style="@style/color_card"-->
+            <!--                android:visibility="@{colors.size() >=7 ? View.VISIBLE : View.GONE}"-->
+            <!--                app:cardBackgroundColor="@{colors.size() >= 7 ? ContextCompat.getColor(context, colors.get(6)) : R.color.transparent}" />-->
+
+            <!--            <com.google.android.material.card.MaterialCardView-->
+            <!--                style="@style/color_card"-->
+            <!--                android:visibility="@{colors.size() >=8 ? View.VISIBLE : View.GONE}"-->
+            <!--                app:cardBackgroundColor="@{colors.size() >= 8 ? ContextCompat.getColor(context, colors.get(7)) : R.color.transparent}" />-->
+
+            <!--            <com.google.android.material.card.MaterialCardView-->
+            <!--                style="@style/color_card"-->
+            <!--                android:visibility="@{colors.size() >=9 ? View.VISIBLE : View.GONE}"-->
+            <!--                app:cardBackgroundColor="@{colors.size() >= 9 ? ContextCompat.getColor(context, colors.get(8)) : R.color.transparent}" />-->
+
+        </GridLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

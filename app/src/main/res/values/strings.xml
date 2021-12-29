@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Colors</string>
+    <string name="blue">Blue</string>
+    <string name="red">Red</string>
+    <string name="green">Green</string>
+    <string name="yellow">Yellow</string>
+    <string name="pink">Pink</string>
+    <string name="purple">Purple</string>
+    <string name="cyan">Cyan</string>
+    <string name="orange">Orange</string>
+    <string name="brown">Brown</string>
+    <string name="white">White</string>
+    <string name="about">About</string>
+    <string name="start">Start</string>
+    <string name="game_logo">Game Logo</string>
+    <string name="score">Score</string>
+    <string name="highest">Highest</string>
+    <string name="what_color_is_it">What color is it ?</string>
+    <string name="info" translatable="false">Developed By \nHussien Ezz \nMail: hezzeldin1@gmail.com</string>
+</resources>

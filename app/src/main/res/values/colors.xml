@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="red_a400">#ff1744</color>
+    <color name="pink_a700">#c51162</color>
+    <color name="purple_a400">#d500f9</color>
+    <color name="blue_a400">#2979ff</color>
+    <color name="cyan_a400">#00e5ff</color>
+    <color name="green_a400">#00e676</color>
+    <color name="yellow_a400">#ffea00</color>
+    <color name="orange_a400">#ff9100</color>
+    <color name="brown_500">#795548</color>
+    <color name="indigo_900">#1a237e</color>
+    <color name="background">#181a1b</color>
+    <color name="black">#000000</color>
+    <color name="black40">#40000000</color>
+    <color name="white">#ffffff</color>
+    <color name="transparent">#00000000</color>
+
+    R.color.red_a400,
+    R.color.pink_a700,
+    R.color.purple_a400,
+    R.color.blue_a400,
+    R.color.cyan_a400,
+    R.color.green_a400,
+    R.color.yellow_a400,
+    R.color.orange_a400,
+    R.color.brown_500,
+    R.color.white,
+
+
+
+</resources>
