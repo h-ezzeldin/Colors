@@ -16,5 +16,8 @@
     <string name="score">Score</string>
     <string name="highest">Highest</string>
     <string name="what_color_is_it">What color is it ?</string>
-    <string name="info" translatable="false">Developed By \nHussien Ezz \nMail: hezzeldin1@gmail.com</string>
+    <string name="info" translatable="false">Developed By \nHussien Ezz \nMail: hezzeldin1@gmail.com \nSound from Zapsplat.com</string>
+    <string name="back_button">Back button</string>
+    <string name="reset_button">Reset button</string>
+    <string name="color_card">Color card</string>
 </resources>

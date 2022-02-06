@@ -3,7 +3,6 @@ package com.ezz.colors
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.content.res.AppCompatResources
 import com.ezz.colors.databinding.ActivityMainBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
@@ -22,10 +21,13 @@ class MainActivity : AppCompatActivity() {
 
         b.startButton.setOnClickListener {
             startActivity(Intent(this, GameActivity::class.java))
+            Utils.playSound(this, 1)
         }
 
-        b.aboutButton.setOnClickListener { showAboutDeveloper() }
-
+        b.aboutButton.setOnClickListener {
+            showAboutDeveloper()
+            Utils.playSound(this, 1)
+        }
     }
 
     /**
@@ -33,7 +35,6 @@ class MainActivity : AppCompatActivity() {
      */
     private fun showAboutDeveloper() {
         MaterialAlertDialogBuilder(this@MainActivity)
-            .setBackground(AppCompatResources.getDrawable(this@MainActivity, R.color.white))
             .setTitle(getString(R.string.about))
             .setMessage(getString(R.string.info))
             .setNegativeButton("Dismiss", null)

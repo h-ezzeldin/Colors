@@ -18,7 +18,8 @@ class GameActivity : AppCompatActivity() {
     private lateinit var b: ActivityGameBinding
     private lateinit var gameViewModel: GameViewModel
     private var highestScore = 0
-
+    private var lastLevel = 4
+    private var init = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,32 +34,44 @@ class GameActivity : AppCompatActivity() {
         highestScore = getHighScore()
         gameViewModel.highestMLD.value = highestScore
 
-        gameViewModel.scoreMLD.observe(this, {
-
-            animate(b.scoreText, it > b.score!!.toInt())
+        gameViewModel.scoreMLD.observe(this) {
+            if (!init) {
+                animateScores(b.scoreText, it > b.score!!.toInt())
+                Utils.playSound(this, if (it > b.score!!.toInt()) 2 else 3)
+            }
+            init = false
             b.score = it
+        }
 
-        })
-
-        gameViewModel.highestMLD.observe(this, {
+        gameViewModel.highestMLD.observe(this) {
             if (it > highestScore) setHighScore(it)
-            animate(b.highScoreText, it > b.highest!!.toInt())
+            if (!init) {
+                animateScores(b.highScoreText, it > b.highest!!.toInt())
+            }
             highestScore = it
             b.highest = it
-        })
+        }
 
-        gameViewModel.queryMLD.observe(this, {
+        gameViewModel.queryMLD.observe(this) {
             b.color = it.second
             b.colorName = it.first
-        })
+        }
 
-        gameViewModel.choicesListMLD.observe(this, { list ->
+        gameViewModel.choicesListMLD.observe(this) { list ->
             setColorsGrid(list)
-        })
+        }
 
-        b.backButton.setOnClickListener { onBackPressed() }
+        b.backButton.setOnClickListener {
 
-        b.resetButton.setOnClickListener { gameViewModel.reset(true) }
+            onBackPressed()
+            Utils.playSound(this, 1)
+        }
+
+        b.resetButton.setOnClickListener {
+            init = true
+            gameViewModel.reset(true)
+            Utils.playSound(this, 1)
+        }
     }
 
     /**
@@ -74,13 +87,24 @@ class GameActivity : AppCompatActivity() {
 
         list.forEach {
             val card = MaterialCardView(this)
+            card.contentDescription = getString(R.string.color_card)
             gridLayout.addView(card)
             setCardStyle(card)
             card.setCardBackgroundColor(getColor(it))
+            animateCards(card)
         }
 
         gridLayout.children.forEach { card ->
-            card.setOnClickListener { gameViewModel.choose((card as MaterialCardView).cardBackgroundColor.defaultColor) }
+            card.setOnClickListener {
+                gameViewModel.choose(
+                    (card as MaterialCardView).cardBackgroundColor.defaultColor
+                )
+            }
+        }
+
+        if (list.size > lastLevel) {
+            Utils.playSound(this, 4)
+            lastLevel = list.size
         }
     }
 
@@ -114,16 +138,19 @@ class GameActivity : AppCompatActivity() {
      */
     private fun setHighScore(score: Int) {
         getPreferences(Context.MODE_PRIVATE).edit().putInt("high", score).apply()
+
     }
 
     /**
-     * animates the view by changing scale and color
+     * animates scores by changing scale and color
      * @param view given view
      * @param wins checks if wins or losses
      */
-    private fun animate(view: View, wins: Boolean) {
+    private fun animateScores(view: View, wins: Boolean) {
         val color = if (wins) R.color.green_a400 else R.color.red_a400
+
         (view as TextView).setTextColor(getColor(color))
+
         view.animate()
             .scaleX(2f)
             .scaleY(2f)
@@ -139,6 +166,27 @@ class GameActivity : AppCompatActivity() {
                         (view).setTextColor(getColor(R.color.white))
                     }
             }
+    }
+
+    /**
+     * animates scores by changing scale and rotation
+     * @param view given view
+     */
+    private fun animateCards(view: View) {
+        view.scaleX = 0f
+        view.scaleY = 0f
+
+        view.animate()
+            .scaleX(1f)
+            .scaleY(1f)
+            .rotation(360f)
+            .setDuration(300L).interpolator = LinearInterpolator()
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Utils.releasePlayer()
     }
 
 }

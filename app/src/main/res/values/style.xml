@@ -12,7 +12,7 @@
     </style>
 
     <style name="button.back" parent="Widget.MaterialComponents.Button" >
-        <item name="android:padding">8dp</item>
+        <item name="android:padding">11dp</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:insetBottom">0dp</item>
         <item name="android:insetLeft">0dp</item>

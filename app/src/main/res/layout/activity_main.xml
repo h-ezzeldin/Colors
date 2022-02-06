@@ -40,6 +40,7 @@
         android:layout_height="48dp"
         android:backgroundTint="@color/orange_a400"
         android:text="@string/about"
+
         android:transitionName="button_trans"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
